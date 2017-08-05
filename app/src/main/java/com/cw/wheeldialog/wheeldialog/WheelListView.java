@@ -137,6 +137,9 @@ public class WheelListView extends ListView implements AbsListView.OnScrollListe
         }
     }
 
+    /**
+     * 在onScrollStateChanged中调用,监听滚动事件
+     */
     private void refreshState(int scrollState) {
         if (scrollState == SCROLL_STATE_IDLE) {
             View itemView = getChildAt(0);
@@ -147,7 +150,7 @@ public class WheelListView extends ListView implements AbsListView.OnScrollListe
             if (deltaY == 0) {
                 return;
             }
-            //控制不会滚动到条目的中间段位置
+            //控制item滚动到两线之间
             if (Math.abs(deltaY) < mItemHeight / 2) {
                 smoothScrollBy(getDistance(deltaY), 50);
             } else {
@@ -156,6 +159,10 @@ public class WheelListView extends ListView implements AbsListView.OnScrollListe
         }
     }
 
+    /**
+     * 用于逐渐滑动到目标位置，参数scrollDistance越小返回值越小，滑动越慢。
+     * 直到返回0，那么smoothScrollBy(0)就不会再引起refreshState的循环调用。
+     */
     private int getDistance(float scrollDistance) {
         if (Math.abs(scrollDistance) <= 2) {
             return (int) scrollDistance;

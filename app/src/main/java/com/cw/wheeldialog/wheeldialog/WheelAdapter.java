@@ -27,6 +27,7 @@ class WheelAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        //这里多加了4个辅助的item是为了前后的item都能滚动到两线之间。
         return mData.size() + WheelListView.WHEEL_SIZE - 1;
     }
 
@@ -56,6 +57,7 @@ class WheelAdapter extends BaseAdapter {
         int start = WheelListView.WHEEL_SIZE / 2;
         int end = mData.size() + WheelListView.WHEEL_SIZE / 2 - 1;
         if (position < start || position > end) {
+            //范围外的是辅助的item，不显示
             convertView.setVisibility(View.INVISIBLE);
         } else {
             textView.setText(getItem(position));
