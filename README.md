@@ -2,7 +2,7 @@
 
 
 ### 效果图
-<img src="http://otjav6lvw.bkt.clouddn.com/17-8-5/32537013.jpg" width="300"/>
+<img src="https://raw.githubusercontent.com/wdzawdh/WheelDialog/master/image.jpg" width="300"/>
 
 ### 使用方法
 >setLabels方法用来设置选项。
